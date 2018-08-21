@@ -1,0 +1,5235 @@
+= medicine-online
+
+
+[[_overview]]
+== Overview
+节点编号：0
+
+
+=== Version information
+[%hardbreaks]
+__Version__ : 0.7.0
+
+
+=== License information
+[%hardbreaks]
+__Terms of service__ : http://www.neuqosft.com
+
+
+=== URI scheme
+[%hardbreaks]
+__Host__ : 172.30.3.217:6301
+__BasePath__ : /
+
+
+=== Tags
+
+* buyer-address-controller : 收货地址
+* buyer-base-api : 药店基本信息
+* buyer-inquiring-controller : 问诊
+* buyer-order-controller : 订单
+* common-recipe-api : Common Recipe Api
+* delivery-controller : 物流相关
+* doctor-inquiring-controller : 医生问诊相关信息
+* drugstore-order-controller : 药店商家接口
+* online-access-ctrl-controller : Online Access Ctrl Controller
+* rongyun-controller : 融云APPserver
+
+
+
+
+[[_paths]]
+== Paths
+
+[[_getaddresslistusingget]]
+=== 获取收货地址列表
+....
+GET /buyer/address
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**idcard** +
+__required__|用户ID|string
+|**Query**|**pageNo** +
+__optional__|当前页数|string
+|**Query**|**pageSize** +
+__optional__|每页条数|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_5144ab55aba1a7bca13f5433cf51e9a0,Page«AddressEntity»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-address-controller
+
+
+[[_addaddressusingput]]
+=== 新增收货地址
+....
+PUT /buyer/address
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**idcard** +
+__required__|用户ID|string
+|**Body**|**addressDTO** +
+__required__|收货地址|<<_addressdto,AddressDTO>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-address-controller
+
+
+[[_updateaddressusingpost]]
+=== 更新收货地址
+....
+POST /buyer/address/{aid}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**aid** +
+__optional__|地址ID|string
+|**Query**|**idcard** +
+__required__|用户ID|string
+|**Body**|**addressDTO** +
+__required__|收货地址|<<_addressdto,AddressDTO>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-address-controller
+
+
+[[_getaddressbyidusingget]]
+=== 查询收货地址
+....
+GET /buyer/address/{aid}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**aid** +
+__required__|地址ID|string
+|**Query**|**idcard** +
+__required__|用户ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_addressentity,AddressEntity>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-address-controller
+
+
+[[_deleteaddressusingdelete]]
+=== 删除收货地址
+....
+DELETE /buyer/address/{aid}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**aid** +
+__optional__|地址ID|string
+|**Query**|**idcard** +
+__required__|用户ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**204**|No Content|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-address-controller
+
+
+[[_updatedefaultaddressusingpost]]
+=== 更新默认收货地址
+....
+POST /buyer/address/{aid}/default
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**aid** +
+__required__|地址ID|string
+|**Query**|**idcard** +
+__required__|用户ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-address-controller
+
+
+[[_getbusinessinfolistusingget]]
+=== 获取药店列表
+....
+GET /buyer/drugstore
+....
+
+
+==== Description
+photoTopId是商家图片头像id，因online里显示图片接口有问题，这字段暂不使用
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**name** +
+__optional__|name|string
+|**Query**|**pageNo** +
+__optional__|当前页数|string
+|**Query**|**pageSize** +
+__optional__|每页条数|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_b4330703efbf7a4a665cbd4a36f924ac,Page«BusinessInfoListDTO»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-base-api
+
+
+[[_gethospitallistusingget]]
+=== 获取医院列表
+....
+GET /buyer/hospital
+....
+
+
+==== Description
+photoTopId是商家图片头像id，因online里显示图片接口有问题，这字段暂不使用
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**name** +
+__optional__|name|string
+|**Query**|**pageNo** +
+__optional__|当前页数|string
+|**Query**|**pageSize** +
+__optional__|每页条数|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_b4330703efbf7a4a665cbd4a36f924ac,Page«BusinessInfoListDTO»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-base-api
+
+
+[[_getinquiringinfousingget]]
+=== 获得问诊状态和排队人数
+....
+GET /buyer/inquiring/queue
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**idcard** +
+__required__|用户ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_5e3d0fe782651c8b30e4efc22b9e5a9d,问诊排队状态>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-inquiring-controller
+
+
+[[_requestinquiringusingpost]]
+=== 申请在线问诊
+....
+POST /buyer/inquiring/request
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**idcard** +
+__required__|用户ID|string
+|**Body**|**inquiringRequestDTO** +
+__required__|请求问诊DTO|<<_inquiringrequestdto,InquiringRequestDTO>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-inquiring-controller
+
+
+[[_cannelinquiringusingpost]]
+=== 取消问诊
+....
+POST /buyer/inquiring/{doctorId}/cannel
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**doctorId** +
+__optional__|问诊医生ID|string
+|**Query**|**idcard** +
+__required__|用户ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-inquiring-controller
+
+
+[[_finishinquiringusingpost]]
+=== 结束问诊
+....
+POST /buyer/inquiring/{doctorId}/finish
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**doctorId** +
+__optional__|问诊医生ID|string
+|**Query**|**idcard** +
+__required__|用户ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-inquiring-controller
+
+
+[[_getorderlistusingget]]
+=== 查询订单
+....
+GET /buyer/order
+....
+
+
+==== Description
+暂不支持已取消
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**idcard** +
+__required__|购药人身份证号|string
+|**Query**|**orderStatus** +
+__required__|订单状态(待付款、待收货、已完成、已取消)|enum (wp, wfd, completed, cancel)
+|**Query**|**pageNo** +
+__optional__|当前页数|string
+|**Query**|**pageSize** +
+__optional__|每页条数|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_986038f319930a11b0b7c576ea9fdf0a,Page«OrderInfoDTO»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-order-controller
+
+
+[[_confirmorderusingpost]]
+=== 订单确认
+....
+POST /buyer/order/confirm
+....
+
+
+==== Description
+保存订单
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**idcard** +
+__required__|购药人身份证号|string
+|**Body**|**dto** +
+__required__|dto|<<_11dc2c1056f4197576463eee84956d49,订单确认时的附加信息>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-order-controller
+
+
+[[_orderonlinepayusingpost]]
+=== 发起绑卡支付
+....
+POST /buyer/order/pay
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**idcard** +
+__required__|idcard|string
+|**Body**|**payReq** +
+__required__|payReq|<<_neuqpayreq,NeuqPayReq>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_neuqorderrsp,NeuqOrderRsp>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-order-controller
+
+
+[[_priceusingpost]]
+=== 下单（处方划价）
+....
+POST /buyer/order/recipe
+....
+
+
+==== Description
+保存订单
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**idcard** +
+__required__|购药人身份证号|string
+|**Body**|**dto** +
+__required__|dto|<<_5740b9cba32509084b2e7ba1fa441c8a,请求划价>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-order-controller
+
+
+[[_ordersettleusingpost]]
+=== 发起费用分割
+....
+POST /buyer/order/settle
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**idcard** +
+__required__|idcard|string
+|**Body**|**payReq** +
+__required__|payReq|<<_neuqpayreq,NeuqPayReq>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_settleinfoinsuranceentity,SettleInfoInsuranceEntity>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-order-controller
+
+
+[[_ybyjsusingget]]
+=== 刷新订单预结算信息
+....
+GET /buyer/order/ybyjs
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**idcard** +
+__required__|购药人身份证号|string
+|**Query**|**orderId** +
+__required__|orderId|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_ybjsoutdto,YbjsOutDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-order-controller
+
+
+[[_getorderinfousingget]]
+=== 查询订单信息
+....
+GET /buyer/order/{orderId}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**orderId** +
+__required__|订单ID|string
+|**Query**|**idcard** +
+__required__|购药人身份证号|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_orderinfoaccountdto,OrderInfoAccountDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-order-controller
+
+
+[[_cannelorderusingdelete]]
+=== 取消订单
+....
+DELETE /buyer/order/{orderId}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**orderId** +
+__optional__|订单ID|string
+|**Query**|**idcard** +
+__required__|用户ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**204**|No Content|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-order-controller
+
+
+[[_getpaytypelistusingget]]
+=== 查询商家支持的支付方式码数组
+....
+GET /buyer/paytype
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**busiId** +
+__required__|商家ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|string
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-base-api
+
+
+[[_getrecipelistusingget]]
+=== 根据就诊人身份证号查询处方
+....
+GET /buyer/recipe
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**idcard** +
+__required__|身份证号|string
+|**Query**|**recipePaid** +
+__optional__|处方支付状态|enum (0, 10, 20)
+|**Query**|**type** +
+__optional__|预留字段|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_recipeinfoentity,RecipeInfoEntity>> > array
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* common-recipe-api
+
+
+[[_getrecipeinfousingget]]
+=== 根据处方ID查询处方明细
+....
+GET /buyer/recipe/detail
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**recipeId** +
+__required__|处方ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_recipequerydto,RecipeQueryDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* common-recipe-api
+
+
+[[_getbuyertokenusingget]]
+=== 获取用户token
+....
+GET /buyer/rongyun/token
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**idcard** +
+__optional__|用户id|string
+|**Query**|**name** +
+__optional__|用户姓名|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_tokenmessagedto,TokenMessageDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* rongyun-controller
+
+
+[[_getpersoninfousingget]]
+=== 获取人员基本信息
+....
+GET /buyer/userinfo
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**idcard** +
+__required__|idcard|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_personinfodto,PersonInfoDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-base-api
+
+
+[[_getdepartmentinfolistusingget]]
+=== 获取科室列表
+....
+GET /buyer/{busiId}/depart
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**busiId** +
+__required__|商家ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_departmentinfoentity,DepartmentInfoEntity>> > array
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-base-api
+
+
+[[_getdoctorinfolistusingget]]
+=== 获取医生的列表
+....
+GET /buyer/{busiId}/doctor
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**busiId** +
+__required__|商家ID|string
+|**Query**|**pageNo** +
+__optional__|当前页数|string
+|**Query**|**pageSize** +
+__optional__|每页条数|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_a6d262342cf8daf7b4b39a095d4d6923,Page«DoctorInfoEntity»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-base-api
+
+
+[[_getinquringwaylistusingget]]
+=== 查询医院支持的问诊方式
+....
+GET /buyer/{busiId}/inquringway
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**busiId** +
+__required__|商家ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< string > array
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-base-api
+
+
+[[_getbusinessphotoinfousingget]]
+=== 显示商家图片
+....
+GET /buyer/{busiId}/photo/{photoId}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**busiId** +
+__required__|商家ID|string
+|**Path**|**photoId** +
+__required__|商家图片ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `image/jpeg`
+
+
+==== Tags
+
+* buyer-base-api
+
+
+[[_getdoctorinfoandstatelistusingget]]
+=== 融云获取医生的列表
+....
+GET /buyer/{busiId}/rydoctor
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**busiId** +
+__required__|商家ID|string
+|**Query**|**departmentId** +
+__required__|科室ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_doctorinfoandstatedto,DoctorInfoAndStateDTO>> > array
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* buyer-base-api
+
+
+[[_countusingget]]
+=== 统计结算信息
+....
+GET /delivery/count
+....
+
+
+==== Description
+查询某时间段的接单数量、收取现金金额，以便对账
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Header**|**X-Device-Id** +
+__required__|X-Device-Id|string
+|**Query**|**busiId** +
+__required__|busiId|string
+|**Query**|**endTime** +
+__required__|结束时间|string
+|**Query**|**pageNo** +
+__optional__|当前页数|string
+|**Query**|**pageSize** +
+__optional__|每页条数|string
+|**Query**|**startTIme** +
+__required__|开始时间|string
+|**Query**|**userid** +
+__required__|配送员ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_deliverycountdto,DeliveryCountDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* delivery-controller
+
+
+[[_querydeliveryorderusingget]]
+=== 查询配送单
+....
+GET /delivery/order/
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Header**|**X-Device-Id** +
+__required__|X-Device-Id|string
+|**Query**|**busiId** +
+__required__|busiId|string
+|**Query**|**deliveryStatus** +
+__required__|配送单状态(已发货、已完成)|enum (35, 40)
+|**Query**|**pageNo** +
+__optional__|当前页数|string
+|**Query**|**pageSize** +
+__optional__|每页条数|string
+|**Query**|**userid** +
+__required__|配送员ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_7b137efbb956a29e891ce64b373ad35c,Page«DeliveryQueryDTO»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* delivery-controller
+
+
+[[_canneldeliveringusingpost]]
+=== 订单商品取消发货
+....
+POST /delivery/{deliveryId}/cannel
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Header**|**X-Device-Id** +
+__required__|X-Device-Id|string
+|**Path**|**deliveryId** +
+__required__|配送单ID|string
+|**Query**|**busiId** +
+__required__|busiId|string
+|**Query**|**userid** +
+__required__|配送员ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* delivery-controller
+
+
+[[_deliveredusingpost]]
+=== 订单商品收货
+....
+POST /delivery/{deliveryId}/end
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Header**|**X-Device-Id** +
+__required__|X-Device-Id|string
+|**Path**|**deliveryId** +
+__required__|配送单ID|string
+|**Query**|**busiId** +
+__required__|busiId|string
+|**Query**|**receiverName** +
+__required__|签收人|string
+|**Query**|**userid** +
+__required__|配送员ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* delivery-controller
+
+
+[[_orderprepriceusingget]]
+=== 发起预结算
+....
+GET /delivery/{deliveryId}/order/price
+....
+
+
+==== Description
+对于货到付款的订单，重新发起预结算获取订单价格
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Header**|**X-Device-Id** +
+__required__|X-Device-Id|string
+|**Path**|**deliveryId** +
+__required__|配送单ID|string
+|**Query**|**busiId** +
+__required__|busiId|string
+|**Query**|**userid** +
+__required__|配送员ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_ybjsoutdto,YbjsOutDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* delivery-controller
+
+
+[[_ordersitransusingpost]]
+=== 发起读卡结算
+....
+POST /delivery/{deliveryId}/order/sitrans
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Header**|**X-Device-Id** +
+__required__|X-Device-Id|string
+|**Path**|**deliveryId** +
+__required__|配送单ID|string
+|**Query**|**busiId** +
+__required__|busiId|string
+|**Query**|**userid** +
+__required__|配送员ID|string
+|**Body**|**dto** +
+__required__|dto|<<_sitransdto,SiTransDTO>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_settleinfoinsuranceentity,SettleInfoInsuranceEntity>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* delivery-controller
+
+
+[[_deliveringusingpost]]
+=== 订单商品发货
+....
+POST /delivery/{deliveryId}/start
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Header**|**X-Device-Id** +
+__required__|X-Device-Id|string
+|**Path**|**deliveryId** +
+__required__|配送单ID|string
+|**Query**|**busiId** +
+__required__|busiId|string
+|**Query**|**userid** +
+__required__|配送员ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* delivery-controller
+
+
+[[_getinquiringusingget]]
+=== 获取就诊人列表
+....
+GET /doctor/inquiring
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**inquiringStatus** +
+__required__|问诊状态，逗号隔开|string
+|**Query**|**userid** +
+__required__|医生ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_inquiringpersondto,InquiringPersonDTO>> > array
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* doctor-inquiring-controller
+
+
+[[_finishinquiringusingpost_1]]
+=== 结束问诊
+....
+POST /doctor/inquiring/finish
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**userid** +
+__optional__|问诊医生ID|string
+|**Body**|**dto** +
+__required__|dto|<<_inquiringdonedto,InquiringDoneDTO>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* doctor-inquiring-controller
+
+
+[[_updateinquiringstatususingpost]]
+=== 医生接诊
+....
+POST /doctor/inquiring/inquiring
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**qidcard** +
+__required__|问诊用户ID身份证号|string
+|**Query**|**userid** +
+__required__|userid|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* doctor-inquiring-controller
+
+
+[[_addrecipeinfousingpost]]
+=== 新增处方信息
+....
+POST /doctor/inquiring/recipe
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**busiId** +
+__required__|busiId|string
+|**Query**|**userid** +
+__required__|userid|string
+|**Body**|**recipeInfoDTO** +
+__required__|处方信息|<<_newrecipeinfodto,NewRecipeInfoDTO>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* common-recipe-api
+
+
+[[_getrecipelistusingget_1]]
+=== 根据就诊人身份证号查询处方
+....
+GET /doctor/inquiring/recipe
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**idcard** +
+__required__|身份证号|string
+|**Query**|**recipePaid** +
+__optional__|处方支付状态|enum (0, 10, 20)
+|**Query**|**type** +
+__optional__|预留字段|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_recipeinfoentity,RecipeInfoEntity>> > array
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* common-recipe-api
+
+
+[[_deleterecipeinfousingpost]]
+=== 删除处方信息
+....
+POST /doctor/inquiring/recipe/delete
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**busiId** +
+__required__|busiId|string
+|**Query**|**recipeId** +
+__required__|处方ID|string
+|**Query**|**userid** +
+__required__|userid|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* common-recipe-api
+
+
+[[_getrecipeinfousingget_1]]
+=== 根据处方ID查询处方明细
+....
+GET /doctor/inquiring/recipe/detail
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**recipeId** +
+__required__|处方ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_recipequerydto,RecipeQueryDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* common-recipe-api
+
+
+[[_mnemonicmedicineusingget]]
+=== 药品助记查询
+....
+GET /doctor/inquiring/recipe/mnemonic
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**busiId** +
+__required__|busiId|string
+|**Query**|**q** +
+__required__|q|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_druginfodto,DrugInfoDTO>> > array
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* common-recipe-api
+
+
+[[_updaterecipeinfousingpost]]
+=== 修改处方信息
+....
+POST /doctor/inquiring/recipe/update
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**busiId** +
+__required__|busiId|string
+|**Query**|**userid** +
+__required__|userid|string
+|**Body**|**updateRecipeDTO** +
+__required__|修改处方信息|<<_updaterecipedto,UpdateRecipeDTO>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* common-recipe-api
+
+
+[[_getinquringwaylistusingget_1]]
+=== 查询医院支持的问诊方式
+....
+GET /doctor/inquringway
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**userid** +
+__required__|问诊医生ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< string > array
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* doctor-inquiring-controller
+
+
+[[_getjobstateusingget]]
+=== 获取医生执业状态信息
+....
+GET /doctor/jobs
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**userid** +
+__required__|医生ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_doctorjobstateentity,DoctorJobStateEntity>> > array
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* doctor-inquiring-controller
+
+
+[[_getdoctortokenusingget]]
+=== 获取医生token
+....
+GET /doctor/rongyun/token
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**name** +
+__optional__|用户姓名|string
+|**Query**|**userid** +
+__optional__|用户id|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_tokenmessagedto,TokenMessageDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* rongyun-controller
+
+
+[[_updatereceptionusingpost]]
+=== 更新就诊标记
+....
+POST /doctor/switch/reception
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**jobId** +
+__required__|医生执业状态ID|string
+|**Query**|**mode** +
+__required__|是否接受问诊|string
+|**Query**|**userid** +
+__required__|医生ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* doctor-inquiring-controller
+
+
+[[_getorderlistusingget_1]]
+=== 获取订单列表
+....
+GET /drugstore/order
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**busiId** +
+__required__|购药药店id|string
+|**Query**|**medicalInsurance** +
+__optional__|是否医保结算|string
+|**Query**|**orderStatus** +
+__optional__|订单状态(多个状态逗号分隔，不传表示所有)|string
+|**Query**|**orderType** +
+__optional__|订单类型|string
+|**Query**|**pageNo** +
+__optional__|当前页数|string
+|**Query**|**pageSize** +
+__optional__|每页条数|string
+|**Query**|**param** +
+__optional__|处方编号或购药人id|string
+|**Query**|**payStatus** +
+__optional__|支付状态(多个状态逗号分隔，不传表示所有)|string
+|**Query**|**payType** +
+__optional__|支付方式|string
+|**Query**|**userid** +
+__required__|操作员id|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_06100ae2906983108d4e4e3bde212567,Page«OrderInfoEntity»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* drugstore-order-controller
+
+
+[[_querymfrsdrugsinfousingget]]
+=== 划价时查询厂商药品相应信息
+....
+GET /drugstore/order/mfrsdrugsinfo
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**busiId** +
+__required__|购药药店id|string
+|**Query**|**orderId** +
+__required__|订单Id|string
+|**Query**|**productId** +
+__required__|商品订单id|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_druginfodto,DrugInfoDTO>> > array
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* drugstore-order-controller
+
+
+[[_getordernumusingget]]
+=== 统计药店订单状态条数
+....
+GET /drugstore/order/number
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**busiId** +
+__required__|购药药店id|string
+|**Query**|**userid** +
+__required__|操作员id|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_ordernumdto,OrderNumDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* drugstore-order-controller
+
+
+[[_deliveryprintusingpost]]
+=== 配送单批量打印
+....
+POST /drugstore/order/print
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**orderIdList** +
+__required__|orderIdList|< string > array
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* drugstore-order-controller
+
+
+[[_queryproductanddrugsinfousingget]]
+=== 划价时商品和药品详细信息
+....
+GET /drugstore/order/productdrugsinfo
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**busiId** +
+__required__|购药药店id|string
+|**Query**|**orderId** +
+__required__|订单Id|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_orderproductanddrugdto,OrderProductAndDrugDTO>> > array
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* drugstore-order-controller
+
+
+[[_repocallbackusingget]]
+=== 发药回调
+....
+GET /drugstore/order/repocallback
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**busiId** +
+__required__|购药药店id|string
+|**Query**|**orderId** +
+__required__|订单Id|string
+|**Query**|**userid** +
+__required__|操作员id|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* drugstore-order-controller
+
+
+[[_getorderproductlistusingget]]
+=== 获取订单商品
+....
+GET /drugstore/order/{orderId}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**orderId** +
+__required__|订单Id|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_orderproductentity,OrderProductEntity>> > array
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* drugstore-order-controller
+
+
+[[_gendeliveryusingpost]]
+=== 生成配送单
+....
+POST /drugstore/order/{orderId}/gendelivery
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**orderId** +
+__required__|订单Id|string
+|**Query**|**busiId** +
+__required__|购药药店id|string
+|**Query**|**busiRepoId** +
+__required__|仓储地Id|string
+|**Query**|**deliveryMoney** +
+__required__|配送费|string
+|**Query**|**userid** +
+__required__|操作员id|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* drugstore-order-controller
+
+
+[[_priceusingpost_1]]
+=== 订单商品划价
+....
+POST /drugstore/order/{orderId}/price
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**orderId** +
+__required__|订单Id|string
+|**Query**|**busiId** +
+__required__|购药药店id|string
+|**Query**|**userid** +
+__required__|操作员id|string
+|**Body**|**goods** +
+__required__|goods|< <<_productpricedto,ProductPriceDTO>> > array
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* drugstore-order-controller
+
+
+[[_pricecancelusingpost]]
+=== 取消商品划价
+....
+POST /drugstore/order/{orderId}/price/cancel
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**orderId** +
+__required__|订单Id|string
+|**Query**|**busiId** +
+__required__|购药药店id|string
+|**Query**|**userid** +
+__required__|操作员id|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* drugstore-order-controller
+
+
+[[_pricecompleteusingpost]]
+=== 完成商品划价
+....
+POST /drugstore/order/{orderId}/price/confirm
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**orderId** +
+__required__|订单Id|string
+|**Query**|**busiId** +
+__required__|购药药店id|string
+|**Query**|**userid** +
+__required__|操作员id|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* drugstore-order-controller
+
+
+[[_pricelockusingpost]]
+=== 商品划价锁定
+....
+POST /drugstore/order/{orderId}/price/lock
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**orderId** +
+__required__|订单Id|string
+|**Query**|**busiId** +
+__required__|购药药店id|string
+|**Query**|**userid** +
+__required__|操作员id|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* drugstore-order-controller
+
+
+[[_repocancelusingpost]]
+=== 取消商品配货
+....
+POST /drugstore/order/{orderId}/repo/cancel
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**orderId** +
+__required__|订单Id|string
+|**Query**|**busiId** +
+__required__|购药药店id|string
+|**Query**|**userid** +
+__required__|操作员id|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* drugstore-order-controller
+
+
+[[_repofinishusingpost]]
+=== 订单商品配货
+....
+POST /drugstore/order/{orderId}/repo/confirm
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**orderId** +
+__required__|订单Id|string
+|**Query**|**busiId** +
+__required__|购药药店id|string
+|**Query**|**userid** +
+__required__|操作员id|string
+|**Body**|**goods** +
+__required__|goods|< <<_productrepodto,ProductRepoDTO>> > array
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* drugstore-order-controller
+
+
+[[_repousingpost]]
+=== 订单商品配货锁定
+....
+POST /drugstore/order/{orderId}/repo/lock
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**orderId** +
+__required__|订单Id|string
+|**Query**|**busiId** +
+__required__|购药药店id|string
+|**Query**|**userid** +
+__required__|操作员id|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* drugstore-order-controller
+
+
+[[_getrepoorderusingget]]
+=== 查询配送单
+....
+GET /drugstore/repo/order
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**busiId** +
+__required__|药店ID|string
+|**Query**|**isPrint** +
+__required__|是否打印|enum (1, 0)
+|**Query**|**pageNo** +
+__optional__|当前页数|string
+|**Query**|**pageSize** +
+__optional__|每页条数|string
+|**Query**|**repoId** +
+__required__|仓库ID|string
+|**Query**|**userid** +
+__required__|操作员ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_79fa766903b0e72564c3936871951057,Page«RepoOrderDTO»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* drugstore-order-controller
+
+
+[[_querymfrsdrugsinfotodrugsusingget]]
+=== 封装商家药品信息供药店使用
+....
+GET /drugstore/{busiId}/drugs
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**busiId** +
+__required__|购药药店id|string
+|**Query**|**medicineName** +
+__optional__|药品名称|string
+|**Query**|**pageNo** +
+__optional__|当前页数|string
+|**Query**|**pageSize** +
+__optional__|每页条数|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_9ab8dbbef285ba8a3ba98c9828121a78,Page«DEMO药品表»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* drugstore-order-controller
+
+
+[[_getbusinessrepoinfolistusingget]]
+=== 获取某商家的仓储列表
+....
+GET /drugstore/{busiId}/repo
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**busiId** +
+__required__|商家id|string
+|**Query**|**pageNo** +
+__optional__|当前页数|string
+|**Query**|**pageSize** +
+__optional__|每页条数|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_22b63a0296d4f5007f71c5124d45e914,Page«BusinessRepoInfoEntity»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* drugstore-order-controller
+
+
+[[_checkctrlusingget]]
+=== 接入控制接口
+....
+GET /online/ctrl
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**clientName** +
+__optional__|clientName|string
+|**Query**|**clientVersion** +
+__optional__|clientVersion|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* online-access-ctrl-controller
+
+
+[[_gethistoryusingget]]
+=== 获取消息历史记录
+....
+GET /rongyun/history
+....
+
+
+==== Description
+返回下载URL
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**date** +
+__required__|日期|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* rongyun-controller
+
+
+[[_updaterecipepaidusingpost]]
+=== 处方状态流转，处方已支付
+....
+POST /{recipeId}/paid
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**recipeId** +
+__required__|处方ID|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_globalmessage,GlobalMessage>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `\*/*`
+
+
+==== Tags
+
+* common-recipe-api
+
+
+
+
+[[_definitions]]
+== Definitions
+
+[[_accountinfoentity]]
+=== AccountInfoEntity
+结算信息明细
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**aac001** +
+__optional__|个人编号|string
+|**aac002** +
+__optional__|公民身份号码|string
+|**aac003** +
+__optional__|姓名|string
+|**aae011** +
+__optional__|经办人|string
+|**aae036** +
+__optional__|经办时间|string
+|**aaz500** +
+__optional__|社保卡号|string
+|**akc087** +
+__optional__|卡结算后余额|number
+|**akc190** +
+__optional__|医保结算流水号|string
+|**akc255** +
+__optional__|本次帐户支付金额|number
+|**akc260** +
+__optional__|本次统筹支付金额|number
+|**akc261** +
+__optional__|本次现金支付金额|number
+|**akc264** +
+__optional__|医疗费总额|number
+|**akc706** +
+__optional__|大病救助基金支付|number
+|**akc707** +
+__optional__|公务员补助支付|number
+|**akc708** +
+__optional__|其他基金支出|number
+|**errormsg** +
+__optional__|返回错误信息|string
+|**msgno** +
+__optional__|业务交易码|string
+|**orderId** +
+__optional__|app订单编号|string
+|**returnnum** +
+__optional__|返回成功标志(1成功-1失败)|string
+|===
+
+
+[[_addressdto]]
+=== AddressDTO
+收货地址DTO
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**city** +
+__optional__|地址城市|string
+|**contact** +
+__optional__|收件人电话|string
+|**district** +
+__optional__|地址区域|string
+|**isDefault** +
+__optional__|是否是默认地址|string
+|**province** +
+__optional__|地址省份|string
+|**receiptPerson** +
+__optional__|收件人|string
+|**site** +
+__optional__|详细地址|string
+|===
+
+
+[[_addressentity]]
+=== AddressEntity
+收货地址
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**city** +
+__optional__|地址城市|string
+|**contact** +
+__optional__|收件人电话|string
+|**district** +
+__optional__|地址区域|string
+|**id** +
+__optional__|地址Id|string
+|**isDefault** +
+__optional__|是否是默认地址|string
+|**personId** +
+__optional__|用户Id|string
+|**province** +
+__optional__|地址省份|string
+|**receiptPerson** +
+__optional__|收件人|string
+|**site** +
+__optional__|详细地址|string
+|===
+
+
+[[_businessinfolistdto]]
+=== BusinessInfoListDTO
+商家信息列表
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**brief** +
+__optional__|简介|string
+|**city** +
+__optional__|所在地市|string
+|**desDrugstore** +
+__optional__|是否定点药店|string
+|**desHospital** +
+__optional__|是否定点医院|string
+|**diseaseLable** +
+__optional__|慢病标志|string
+|**drugstoreNumber** +
+__optional__|定点药店编号|string
+|**hospitalLevel** +
+__optional__|医院等级|string
+|**hospitalNumber** +
+__optional__|定点医院编号|string
+|**id** +
+__optional__|商家id|string
+|**inquiringWay** +
+__optional__|支持问诊方式，多种方式以“,”隔开|string
+|**insuranceLable** +
+__optional__|医保标志|string
+|**latitude** +
+__optional__|纬度|string
+|**location** +
+__optional__|地址|string
+|**longitude** +
+__optional__|经度|string
+|**name** +
+__optional__|名称|string
+|**payType** +
+__optional__|支持支付方式|string
+|**phone** +
+__optional__|联系电话|string
+|**photoId** +
+__optional__|商家图片ID|string
+|**photoTopId** +
+__optional__|商家图片头ID|string
+|**serviceArea** +
+__optional__|服务范围|string
+|**siGrantId** +
+__optional__|定点授权码|string
+|**url** +
+__optional__|url|string
+|===
+
+
+[[_businessrepoinfoentity]]
+=== BusinessRepoInfoEntity
+药店仓储点
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**brief** +
+__optional__|备注|string
+|**businessId** +
+__optional__|BUSINESS_INFO商家信息主键|string
+|**id** +
+__optional__||string
+|**latitude** +
+__optional__|纬度|string
+|**longitude** +
+__optional__|经度|string
+|**name** +
+__optional__|仓储名称|string
+|**scrap** +
+__optional__|是否已废弃|string
+|===
+
+
+[[_aa6fb3c53ee83d8e5925e9eef5cb6569]]
+=== DEMO药品表
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**aka065** +
+__optional__|收费项目等级|string
+|**brandName** +
+__optional__|品牌|string
+|**description** +
+__optional__|描述信息|string
+|**dosageForm** +
+__optional__|药品剂型|string
+|**doseInfo** +
+__optional__|使用剂量|string
+|**expiry** +
+__optional__|有效期|string
+|**genericName** +
+__optional__|药品通用名|string
+|**id** +
+__optional__||string
+|**innerCode** +
+__optional__|院内药品代码|string
+|**insuranceCode** +
+__optional__|医保药品代码|string
+|**licenseNumber** +
+__optional__|批准文号|string
+|**mainImg** +
+__optional__|药品主图|string
+|**medicineName** +
+__optional__|药品名称|string
+|**medicineSizeNum** +
+__optional__|药品规格数量|string
+|**medicineSizeType** +
+__optional__|药品规格类型|string
+|**mnemonic** +
+__optional__|药品助记码|string
+|**price** +
+__optional__|药品价格|string
+|**producer** +
+__optional__|生产商|string
+|===
+
+
+[[_deliverycountdto]]
+=== DeliveryCountDTO
+配送单统计信息DTO
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**content** +
+__optional__||< object > array
+|**first** +
+__optional__||boolean
+|**last** +
+__optional__||boolean
+|**nextPage** +
+__optional__||boolean
+|**number** +
+__optional__||integer (int32)
+|**numberOfElements** +
+__optional__||integer (int32)
+|**previousPage** +
+__optional__||boolean
+|**size** +
+__optional__||integer (int32)
+|**sort** +
+__optional__||<<_sort,Sort>>
+|**totalCash** +
+__optional__|现金金额总数|number
+|**totalElements** +
+__optional__||integer (int64)
+|**totalPages** +
+__optional__||integer (int32)
+|===
+
+
+[[_deliveryquerydto]]
+=== DeliveryQueryDTO
+配送单查询信息DTO
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**aaz500** +
+__optional__|社保卡号|string
+|**address** +
+__optional__|地址|string
+|**deliveryCompany** +
+__optional__|配送单位|string
+|**deliveryGroup** +
+__optional__|配送组|string
+|**deliveryMoney** +
+__optional__|配送费|string
+|**deliveryOrderNumber** +
+__optional__|配送单号|string
+|**deliveryStatus** +
+__optional__|配送单状态|string
+|**deliveryTime** +
+__optional__|配送时间|string
+|**deliveryType** +
+__optional__|配送方式|string
+|**deliveryWorker** +
+__optional__|配送员|string
+|**isPrint** +
+__optional__|是否打印|string
+|**message** +
+__optional__|留言|string
+|**orderAccount** +
+__optional__|订单金额|string
+|**orderId** +
+__optional__|订单id|string
+|**orderType** +
+__optional__|发药类型|string
+|**payChannel** +
+__optional__|支付渠道|string
+|**payType** +
+__optional__|支付方式（在线支付、货到付款）|string
+|**personId** +
+__optional__|购药人Id|string
+|**personName** +
+__optional__|收货人姓名|string
+|**phone** +
+__optional__|联系方式|string
+|**receiptTime** +
+__optional__|收货时间|string
+|**receiverArea** +
+__optional__|收货人区域地址|string
+|**receiverName** +
+__optional__|收货人|string
+|**recipeNumber** +
+__optional__|处方号|string
+|**repoName** +
+__optional__|取货点|string
+|===
+
+
+[[_departmentinfoentity]]
+=== DepartmentInfoEntity
+科室信息
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**businessId** +
+__optional__|医院id|string
+|**id** +
+__optional__|科室id|string
+|**name** +
+__optional__|科室名称|string
+|===
+
+
+[[_doctorinfoandstatedto]]
+=== DoctorInfoAndStateDTO
+医生信息和状态
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**brief** +
+__optional__|医生简介|string
+|**departmentId** +
+__optional__|科室ID|string
+|**departmentName** +
+__optional__|科室名称|string
+|**doctorId** +
+__optional__|医生ID|string
+|**hospitalId** +
+__optional__|医院ID|string
+|**hospitalName** +
+__optional__|医院名称|string
+|**idcard** +
+__optional__|身份证号|string
+|**insuranceNumber** +
+__optional__|医生医保执行id|string
+|**jobTitle** +
+__optional__|职称|string
+|**name** +
+__optional__|姓名|string
+|**queueCnt** +
+__optional__|排队人数|integer (int32)
+|**reception** +
+__optional__|是否接受问诊|string
+|**rongCloudId** +
+__optional__||string
+|**vqid** +
+__optional__|医生执行资格证号|string
+|===
+
+
+[[_doctorinfoentity]]
+=== DoctorInfoEntity
+医生信息
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**brief** +
+__optional__|医生简介|string
+|**id** +
+__optional__|医生id|string
+|**idcard** +
+__optional__|身份证号|string
+|**insuranceNumber** +
+__optional__|医生医保执行id|string
+|**jobTitle** +
+__optional__|职称|string
+|**name** +
+__optional__|姓名|string
+|**vqid** +
+__optional__|医生执行资格证号|string
+|===
+
+
+[[_doctorjobstateentity]]
+=== DoctorJobStateEntity
+医生执业状态
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**departmentId** +
+__optional__|科室ID|string
+|**departmentName** +
+__optional__|科室名称D|string
+|**doctorId** +
+__optional__|医生ID|string
+|**hospitalId** +
+__optional__|医院ID|string
+|**hospitalName** +
+__optional__|医院名称|string
+|**id** +
+__optional__|医生执业ID|string
+|**reception** +
+__optional__|是否接受问诊|string
+|===
+
+
+[[_druginfodto]]
+=== DrugInfoDTO
+药品信息DTO
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**aka065** +
+__optional__|收费项目等级|string
+|**brandName** +
+__optional__|品牌|string
+|**description** +
+__optional__|描述信息|string
+|**dosageForm** +
+__optional__|药品剂型|string
+|**doseInfo** +
+__optional__|使用剂量|string
+|**expiry** +
+__optional__|有效期|string
+|**genericName** +
+__optional__|药品通用名|string
+|**innerCode** +
+__optional__|院内药品代码|string
+|**insuranceCode** +
+__optional__|医保药品代码|string
+|**licenseNumber** +
+__optional__|批准文号|string
+|**mainImg** +
+__optional__|药品主图|string
+|**medicineName** +
+__optional__|药品名称|string
+|**medicineSizeNum** +
+__optional__|药品规格数量|string
+|**medicineSizeType** +
+__optional__|药品规格类型|string
+|**mnemonic** +
+__optional__|药品助记码|string
+|**price** +
+__optional__|药品价格|string
+|**producer** +
+__optional__|生产商|string
+|===
+
+
+[[_globalmessage]]
+=== GlobalMessage
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Name|Schema
+|**code** +
+__optional__|string
+|**message** +
+__optional__|string
+|===
+
+
+[[_inquiringdonedto]]
+=== InquiringDoneDTO
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**diagnoseMessage** +
+__optional__|就诊说明|string
+|**id** +
+__optional__|就诊标识|string
+|**userId** +
+__optional__|就诊人身份证号|string
+|===
+
+
+[[_inquiringpersondto]]
+=== InquiringPersonDTO
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**departmentId** +
+__optional__|科室主键|string
+|**departmentName** +
+__optional__|科室名称|string
+|**diagnoseMessage** +
+__optional__|就诊说明|string
+|**doctorCnt** +
+__optional__|排队人数|integer (int32)
+|**doctorId** +
+__optional__|医生主键|string
+|**doctorName** +
+__optional__|医生名称|string
+|**hospitalId** +
+__optional__|医院主键|string
+|**hospitalName** +
+__optional__|医院名称|string
+|**id** +
+__optional__|就诊标识|string
+|**inquiringCloseDate** +
+__optional__|取消问诊时间|string
+|**inquiringCompleteDate** +
+__optional__|结束问诊时间|string
+|**inquiringDate** +
+__optional__|发起问诊时间|string
+|**inquiringStatus** +
+__optional__|问诊状态|string
+|**inquiringWay** +
+__optional__|问诊方式|string
+|**rongCloudId** +
+__optional__||string
+|**userAae140** +
+__optional__|参保险种 0 职工、1 居民、 -1 未参保|string
+|**userId** +
+__optional__|就诊人身份证号|string
+|**userName** +
+__optional__|就诊人姓名|string
+|**userType** +
+__optional__|用户来源-目前只有GGFW|string
+|**userZka102** +
+__optional__|慢病病种|string
+|===
+
+
+[[_inquiringrequestdto]]
+=== InquiringRequestDTO
+请求问诊DTO
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**diagnoseMessage** +
+__optional__|诊断说明|string
+|**doctorId** +
+__optional__|医生主键|string
+|**hospitalId** +
+__optional__|医院主键|string
+|**inquiringWay** +
+__optional__|问诊方式|string
+|**userType** +
+__optional__|购药APP传固定值：GGFW|string
+|**userZka102** +
+__optional__|慢病病种|string
+|===
+
+
+[[_neuqorderrsp]]
+=== NeuqOrderRsp
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Name|Schema
+|**appcode** +
+__optional__|string
+|**bizNo** +
+__optional__|string
+|**clientId** +
+__optional__|string
+|**expires_in** +
+__optional__|integer (int64)
+|**institution** +
+__optional__|string
+|**nonceStr** +
+__optional__|string
+|**ppurl** +
+__optional__|string
+|**preTradeNo** +
+__optional__|string
+|**sign** +
+__optional__|string
+|**ywcode** +
+__optional__|string
+|===
+
+
+[[_neuqpayreq]]
+=== NeuqPayReq
+发起支付
+
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Name|Schema
+|**orderId** +
+__optional__|string
+|**password** +
+__optional__|string
+|**payMethod** +
+__optional__|string
+|**terminalCode** +
+__optional__|string
+|**terminalIp** +
+__optional__|string
+|**terminalPos** +
+__optional__|string
+|**terminalPosx** +
+__optional__|string
+|**terminalPoxy** +
+__optional__|string
+|**terminalType** +
+__optional__|string
+|===
+
+
+[[_newrecipeinfodto]]
+=== NewRecipeInfoDTO
+新增处方信息
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**aka130** +
+__optional__|医疗类别|string
+|**departmentId** +
+__optional__|科室标识|string
+|**diagnoseCode** +
+__optional__|诊断代码|string
+|**outPatientId** +
+__optional__|门诊编号|string
+|**patientAge** +
+__optional__|患者年龄|string
+|**patientIdcard** +
+__optional__|患者身份证号|string
+|**patientName** +
+__optional__|患者姓名|string
+|**patientSex** +
+__optional__|患者性别|string
+|**recipeMedicineList** +
+__optional__||< <<_newrecipemedicinedto,NewRecipeMedicineDTO>> > array
+|===
+
+
+[[_newrecipemedicinedto]]
+=== NewRecipeMedicineDTO
+新增处方用药信息
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**dosageForm** +
+__optional__|药品剂型|string
+|**effectiveDays** +
+__optional__|处方有效天数|string
+|**frequency** +
+__optional__|药品使用频次|string
+|**innerHosCode** +
+__optional__|处方医院药品内码|string
+|**insuranceCode** +
+__optional__|处方药品代码(医保药品代码)|string
+|**medicineCnt** +
+__optional__|药品数量|number
+|**medicineName** +
+__optional__|药品名称|string
+|**medicineSizeNum** +
+__optional__|药品规格数量|number
+|**medicineSizeType** +
+__optional__|药品规格类型|string
+|**medicineSumSize** +
+__optional__|药品使用总剂量|string
+|**remark** +
+__optional__|处方备注信息|string
+|**singleDose** +
+__optional__|单次用药剂量|string
+|===
+
+
+[[_orderinfoaccountdto]]
+=== OrderInfoAccountDTO
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**accountInfo** +
+__optional__|预结算账户信息|<<_accountinfoentity,AccountInfoEntity>>
+|**businessId** +
+__optional__|购药药店id|string
+|**buyerId** +
+__optional__|购药人id|string
+|**buyerName** +
+__optional__|购药人姓名|string
+|**deliveryOrderNumber** +
+__optional__|配货单号|string
+|**id** +
+__optional__|主键|string
+|**medicalInsurance** +
+__optional__|是否医保结算：订单创建时初始化，最终结算付款时预留可修改字段|string
+|**message** +
+__optional__|留言|string
+|**orderConfirmDate** +
+__optional__|订单补全时间|string
+|**orderDate** +
+__optional__|订单创建时间|string
+|**orderStatus** +
+__optional__|订单状态（等待划价、划价中、划价完成、待配货、待发货、已发货、已收货、已关闭）|string
+|**orderType** +
+__optional__|订单类型：慢病、处方、非处方|string
+|**payStatus** +
+__optional__|支付状态（未支付、支付中、已支付）|string
+|**payType** +
+__optional__|支付方式（在线支付、货到付款）|string
+|**priceDate** +
+__optional__|划价完成时间|string
+|**pricePersonId** +
+__optional__|划价人ID|string
+|**products** +
+__optional__|订单商品列表|< <<_orderproductentity,OrderProductEntity>> > array
+|**receiverAddress** +
+__optional__|收货人地址|string
+|**receiverName** +
+__optional__|收货人姓名|string
+|**receiverPhone** +
+__optional__|收货人联系方式|string
+|**recipeId** +
+__optional__|处方主键：慢病、处方购药时必填|string
+|**recipteNumber** +
+__optional__|处方编号（显示用）|string
+|**repoCompleteDate** +
+__optional__|配货完成时间|string
+|**repoPersonId** +
+__optional__|配货人ID|string
+|**settleDate** +
+__optional__|订单结算时间|string
+|**totalAmount** +
+__optional__|总金额，单位元|number
+|===
+
+
+[[_orderinfodto]]
+=== OrderInfoDTO
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**businessId** +
+__optional__|购药药店id|string
+|**businessName** +
+__optional__|购药药店名称|string
+|**buyerId** +
+__optional__|购药人id|string
+|**buyerName** +
+__optional__|购药人姓名|string
+|**deliveryOrderNumber** +
+__optional__|配货单号|string
+|**id** +
+__optional__|主键|string
+|**medicalInsurance** +
+__optional__|是否医保结算：订单创建时初始化，最终结算付款时预留可修改字段|string
+|**message** +
+__optional__|留言|string
+|**orderConfirmDate** +
+__optional__|订单补全时间|string
+|**orderDate** +
+__optional__|订单创建时间|string
+|**orderStatus** +
+__optional__|订单状态（等待划价、划价中、划价完成、待配货、待发货、已发货、已收货、已关闭）|string
+|**orderType** +
+__optional__|订单类型：慢病、处方、非处方|string
+|**payStatus** +
+__optional__|支付状态（未支付、支付中、已支付）|string
+|**payType** +
+__optional__|支付方式（在线支付、货到付款）|string
+|**priceDate** +
+__optional__|划价完成时间|string
+|**pricePersonId** +
+__optional__|划价人ID|string
+|**products** +
+__optional__|订单商品列表|< <<_orderproductentity,OrderProductEntity>> > array
+|**receiverAddress** +
+__optional__|收货人详细地址|string
+|**receiverArea** +
+__optional__|收货人区域地址|string
+|**receiverName** +
+__optional__|收货人姓名|string
+|**receiverPhone** +
+__optional__|收货人联系方式|string
+|**recipeId** +
+__optional__|处方主键：慢病、处方购药时必填|string
+|**recipteNumber** +
+__optional__|处方编号（显示用）|string
+|**repoCompleteDate** +
+__optional__|配货完成时间|string
+|**repoPersonId** +
+__optional__|配货人ID|string
+|**settleDate** +
+__optional__|订单结算时间|string
+|**totalAmount** +
+__optional__|总金额，单位元|number
+|===
+
+
+[[_orderinfoentity]]
+=== OrderInfoEntity
+订单信息
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**aka130** +
+__optional__|医疗类别|string
+|**busiRepoId** +
+__optional__|发货仓储地|string
+|**businessId** +
+__optional__|购药药店id|string
+|**businessName** +
+__optional__|购药药店名称|string
+|**buyerId** +
+__optional__|购药人id|string
+|**buyerName** +
+__optional__|购药人姓名|string
+|**deliveryOrderNumber** +
+__optional__|配货单号|string
+|**diagnoseCode** +
+__optional__|病种编码|string
+|**id** +
+__optional__|订单号|string
+|**medicalInsurance** +
+__optional__|是否医保结算：订单创建时初始化，最终结算付款时预留可修改字段|string
+|**message** +
+__optional__|留言|string
+|**orderConfirmDate** +
+__optional__|订单补全时间|string
+|**orderDate** +
+__optional__|订单创建时间|string
+|**orderStatus** +
+__optional__|订单状态（等待划价、划价中、划价完成、待配货、待发货、已发货、已收货、已关闭）|string
+|**orderType** +
+__optional__|订单类型：慢病、处方、非处方|string
+|**payStatus** +
+__optional__|支付状态（未支付、支付中、已支付）|string
+|**payType** +
+__optional__|支付方式（在线支付、货到付款）|string
+|**priceDate** +
+__optional__|划价完成时间|string
+|**pricePersonId** +
+__optional__|划价人ID|string
+|**receiverAddress** +
+__optional__|收货人详细地址|string
+|**receiverArea** +
+__optional__|收货人区域地址|string
+|**receiverName** +
+__optional__|收货人姓名|string
+|**receiverPhone** +
+__optional__|收货人联系方式|string
+|**recipeId** +
+__optional__|处方主键：慢病、处方购药时必填|string
+|**recipteNumber** +
+__optional__|处方编号（显示用）|string
+|**repoCompleteDate** +
+__optional__|配货完成时间|string
+|**repoPersonId** +
+__optional__|配货人ID|string
+|**settleDate** +
+__optional__|订单结算时间|string
+|**settleId** +
+__optional__|结算ID|string
+|**totalAmount** +
+__optional__|总金额，单位元|number
+|===
+
+
+[[_ordernumdto]]
+=== OrderNumDTO
+商户订单条数DTO
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**priceCompleteNum** +
+__optional__|划价完成|integer (int64)
+|**priceWaitNum** +
+__optional__|等待划价|integer (int64)
+|**pricingNum** +
+__optional__|划价中|integer (int64)
+|**repoFinishNum** +
+__optional__|配货完成|integer (int64)
+|**repoWaitNum** +
+__optional__|待配货|integer (int64)
+|**repoingNum** +
+__optional__|配货中|integer (int64)
+|===
+
+
+[[_orderproductanddrugdto]]
+=== OrderProductAndDrugDTO
+商品和药品详细信息
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**count** +
+__optional__|数量|string
+|**drugInfoDTOS** +
+__optional__|药品信息|< <<_druginfodto,DrugInfoDTO>> > array
+|**drugName** +
+__optional__|药品名称|string
+|**drugPackage** +
+__optional__|包装|string
+|**drugSize** +
+__optional__|规格|string
+|**frequency** +
+__optional__|频次|string
+|**id** +
+__optional__|产品id|string
+|**innerCode** +
+__optional__|药品院内内码|string
+|**insuranceCode** +
+__optional__|药品医保编码|string
+|**mfrs** +
+__optional__|厂家|string
+|**orderId** +
+__optional__|订单id|string
+|**orderIdSub** +
+__optional__|子订单|string
+|**price** +
+__optional__|单价|string
+|**singleUse** +
+__optional__|单次用量|string
+|===
+
+
+[[_orderproductentity]]
+=== OrderProductEntity
+商品订单信息
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**count** +
+__optional__|数量|string
+|**drugName** +
+__optional__|药品名称|string
+|**drugPackage** +
+__optional__|包装|string
+|**drugSize** +
+__optional__|规格|string
+|**frequency** +
+__optional__|频次|string
+|**id** +
+__optional__|Id|string
+|**innerCode** +
+__optional__|药品院内内码|string
+|**insuranceCode** +
+__optional__|药品医保编码|string
+|**mfrs** +
+__optional__|厂家|string
+|**orderId** +
+__optional__|订单id|string
+|**orderIdSub** +
+__optional__|子订单|string
+|**price** +
+__optional__|单价|string
+|**recipeMedicineId** +
+__optional__|厂家|string
+|**singleUse** +
+__optional__|单次用量|string
+|===
+
+
+[[_5144ab55aba1a7bca13f5433cf51e9a0]]
+=== Page«AddressEntity»
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Name|Schema
+|**content** +
+__optional__|< <<_addressentity,AddressEntity>> > array
+|**first** +
+__optional__|boolean
+|**last** +
+__optional__|boolean
+|**number** +
+__optional__|integer (int32)
+|**numberOfElements** +
+__optional__|integer (int32)
+|**size** +
+__optional__|integer (int32)
+|**sort** +
+__optional__|<<_sort,Sort>>
+|**totalElements** +
+__optional__|integer (int64)
+|**totalPages** +
+__optional__|integer (int32)
+|===
+
+
+[[_b4330703efbf7a4a665cbd4a36f924ac]]
+=== Page«BusinessInfoListDTO»
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Name|Schema
+|**content** +
+__optional__|< <<_businessinfolistdto,BusinessInfoListDTO>> > array
+|**first** +
+__optional__|boolean
+|**last** +
+__optional__|boolean
+|**number** +
+__optional__|integer (int32)
+|**numberOfElements** +
+__optional__|integer (int32)
+|**size** +
+__optional__|integer (int32)
+|**sort** +
+__optional__|<<_sort,Sort>>
+|**totalElements** +
+__optional__|integer (int64)
+|**totalPages** +
+__optional__|integer (int32)
+|===
+
+
+[[_22b63a0296d4f5007f71c5124d45e914]]
+=== Page«BusinessRepoInfoEntity»
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Name|Schema
+|**content** +
+__optional__|< <<_businessrepoinfoentity,BusinessRepoInfoEntity>> > array
+|**first** +
+__optional__|boolean
+|**last** +
+__optional__|boolean
+|**number** +
+__optional__|integer (int32)
+|**numberOfElements** +
+__optional__|integer (int32)
+|**size** +
+__optional__|integer (int32)
+|**sort** +
+__optional__|<<_sort,Sort>>
+|**totalElements** +
+__optional__|integer (int64)
+|**totalPages** +
+__optional__|integer (int32)
+|===
+
+
+[[_9ab8dbbef285ba8a3ba98c9828121a78]]
+=== Page«DEMO药品表»
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Name|Schema
+|**content** +
+__optional__|< <<_aa6fb3c53ee83d8e5925e9eef5cb6569,DEMO药品表>> > array
+|**first** +
+__optional__|boolean
+|**last** +
+__optional__|boolean
+|**number** +
+__optional__|integer (int32)
+|**numberOfElements** +
+__optional__|integer (int32)
+|**size** +
+__optional__|integer (int32)
+|**sort** +
+__optional__|<<_sort,Sort>>
+|**totalElements** +
+__optional__|integer (int64)
+|**totalPages** +
+__optional__|integer (int32)
+|===
+
+
+[[_7b137efbb956a29e891ce64b373ad35c]]
+=== Page«DeliveryQueryDTO»
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Name|Schema
+|**content** +
+__optional__|< <<_deliveryquerydto,DeliveryQueryDTO>> > array
+|**first** +
+__optional__|boolean
+|**last** +
+__optional__|boolean
+|**number** +
+__optional__|integer (int32)
+|**numberOfElements** +
+__optional__|integer (int32)
+|**size** +
+__optional__|integer (int32)
+|**sort** +
+__optional__|<<_sort,Sort>>
+|**totalElements** +
+__optional__|integer (int64)
+|**totalPages** +
+__optional__|integer (int32)
+|===
+
+
+[[_a6d262342cf8daf7b4b39a095d4d6923]]
+=== Page«DoctorInfoEntity»
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Name|Schema
+|**content** +
+__optional__|< <<_doctorinfoentity,DoctorInfoEntity>> > array
+|**first** +
+__optional__|boolean
+|**last** +
+__optional__|boolean
+|**number** +
+__optional__|integer (int32)
+|**numberOfElements** +
+__optional__|integer (int32)
+|**size** +
+__optional__|integer (int32)
+|**sort** +
+__optional__|<<_sort,Sort>>
+|**totalElements** +
+__optional__|integer (int64)
+|**totalPages** +
+__optional__|integer (int32)
+|===
+
+
+[[_986038f319930a11b0b7c576ea9fdf0a]]
+=== Page«OrderInfoDTO»
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Name|Schema
+|**content** +
+__optional__|< <<_orderinfodto,OrderInfoDTO>> > array
+|**first** +
+__optional__|boolean
+|**last** +
+__optional__|boolean
+|**number** +
+__optional__|integer (int32)
+|**numberOfElements** +
+__optional__|integer (int32)
+|**size** +
+__optional__|integer (int32)
+|**sort** +
+__optional__|<<_sort,Sort>>
+|**totalElements** +
+__optional__|integer (int64)
+|**totalPages** +
+__optional__|integer (int32)
+|===
+
+
+[[_06100ae2906983108d4e4e3bde212567]]
+=== Page«OrderInfoEntity»
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Name|Schema
+|**content** +
+__optional__|< <<_orderinfoentity,OrderInfoEntity>> > array
+|**first** +
+__optional__|boolean
+|**last** +
+__optional__|boolean
+|**number** +
+__optional__|integer (int32)
+|**numberOfElements** +
+__optional__|integer (int32)
+|**size** +
+__optional__|integer (int32)
+|**sort** +
+__optional__|<<_sort,Sort>>
+|**totalElements** +
+__optional__|integer (int64)
+|**totalPages** +
+__optional__|integer (int32)
+|===
+
+
+[[_79fa766903b0e72564c3936871951057]]
+=== Page«RepoOrderDTO»
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Name|Schema
+|**content** +
+__optional__|< <<_repoorderdto,RepoOrderDTO>> > array
+|**first** +
+__optional__|boolean
+|**last** +
+__optional__|boolean
+|**number** +
+__optional__|integer (int32)
+|**numberOfElements** +
+__optional__|integer (int32)
+|**size** +
+__optional__|integer (int32)
+|**sort** +
+__optional__|<<_sort,Sort>>
+|**totalElements** +
+__optional__|integer (int64)
+|**totalPages** +
+__optional__|integer (int32)
+|===
+
+
+[[_personinfodto]]
+=== PersonInfoDTO
+获取人员基本信息
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**aac001** +
+__optional__|个人编号|string
+|**bussbh** +
+__optional__|人员类别：-1未参保,0职工,1城居|string
+|**idcard** +
+__optional__|身份证号|string
+|**name** +
+__optional__|姓名|string
+|**sicard** +
+__optional__|社保卡号|string
+|**spxxList** +
+__optional__|慢性病审批信息|< <<_spxxdto,SpxxDTO>> > array
+|===
+
+
+[[_productpricedto]]
+=== ProductPriceDTO
+商品订单划价信息DTO
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**id** +
+__optional__|商品Id|string
+|**innerCode** +
+__optional__|药品院内内码|string
+|**mfrs** +
+__optional__|厂家|string
+|**price** +
+__optional__|单价|string
+|===
+
+
+[[_productrepodto]]
+=== ProductRepoDTO
+商品配货信息DTO
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**businessRepoId** +
+__optional__|发药仓储地|string
+|**productId** +
+__optional__|商品Id|string
+|===
+
+
+[[_recipeinfoentity]]
+=== RecipeInfoEntity
+处方信息
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**aka130** +
+__optional__|医疗类别|string
+|**confidentialityCode** +
+__optional__|文档密级|string
+|**departmentId** +
+__optional__|科室标识|string
+|**diagnoseCode** +
+__optional__|诊断代码|string
+|**doctorAuditState** +
+__optional__|医师审方状态（0未审、1通过、2不通过）|string
+|**doctorId** +
+__optional__|处方开立药师id|string
+|**doctorName** +
+__optional__|处方开立药师姓名|string
+|**dosageAuditState** +
+__optional__|药师审方状态（0未审、1通过、2不通过）|string
+|**dosageWorkerId** +
+__optional__|处方调配药剂师id|string
+|**dosageWorkerName** +
+__optional__|处方调配药剂师姓名|string
+|**effectiveTime** +
+__optional__|文档机器生成时间|string
+|**id** +
+__optional__|主键|string
+|**latch** +
+__optional__|处方锁定|string
+|**medicalOrganizationId** +
+__optional__|医疗机构代码|string
+|**medicalOrganizationName** +
+__optional__|医疗机构名称|string
+|**orderDate** +
+__optional__|订单创建时间|string
+|**outPatientId** +
+__optional__|门诊标识|string
+|**patientAge** +
+__optional__|患者年龄|string
+|**patientIdcard** +
+__optional__|患者身份证号|string
+|**patientName** +
+__optional__|患者姓名|string
+|**patientSex** +
+__optional__|患者性别|string
+|**rcClientId** +
+__optional__|处方来源|string
+|**rcHospitalId** +
+__optional__|处方医院ID|string
+|**rcMedicinePaid** +
+__optional__|0 未划价 10 已划价 20 已支付)|string
+|**recipeAmount** +
+__optional__|金额|number
+|**recipeAuditState** +
+__optional__|处方审计状态（0未审、1通过、2不通过）|string
+|**recipeCheckPersonId** +
+__optional__|处方核对药剂师id|string
+|**recipeCheckPersonName** +
+__optional__|处方核对药剂师姓名|string
+|**recipeCreateDate** +
+__optional__|处方开立日期|string
+|**recipeNumber** +
+__optional__|处方编号|string
+|**saveOrganizationId** +
+__optional__|保管机构id|string
+|**saveOrganizationName** +
+__optional__|保管机构名称|string
+|**title** +
+__optional__|文档标题|string
+|**type** +
+__optional__|文档类型|string
+|===
+
+
+[[_recipemedicinedto]]
+=== RecipeMedicineDTO
+处方明细信息
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**dosageForm** +
+__optional__|药品剂型|string
+|**drugstoreId** +
+__optional__|配药药店id|string
+|**effectiveDays** +
+__optional__|处方有效天数|string
+|**frequency** +
+__optional__|药品使用频次|string
+|**id** +
+__optional__|主键|string
+|**innerDrugstoreCode** +
+__optional__|配药药店药品内码|string
+|**innerHosCode** +
+__optional__|处方医院药品内码|string
+|**insuranceCode** +
+__optional__|处方药品代码(医保药品代码)|string
+|**medicineCnt** +
+__optional__|药品数量|number
+|**medicineGroupCode** +
+__optional__|处方药品组代码|string
+|**medicineName** +
+__optional__|药品名称|string
+|**medicineSizeNum** +
+__optional__|药品规格数量|number
+|**medicineSizeType** +
+__optional__|药品规格类型|string
+|**medicineSumSize** +
+__optional__|药品使用总剂量|string
+|**remark** +
+__optional__|处方备注信息|string
+|**singleDose** +
+__optional__|单次用药剂量|string
+|**unitPrice** +
+__optional__|单价，单位元|number
+|===
+
+
+[[_recipequerydto]]
+=== RecipeQueryDTO
+处方查询DTO
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**aka130** +
+__optional__|医疗类别|string
+|**departmentId** +
+__optional__|科室标识|string
+|**diagnoseCode** +
+__optional__|诊断代码|string
+|**doctorAuditState** +
+__optional__|医师审方状态 Constants.YES_NO|string
+|**doctorId** +
+__optional__|处方开立药师id|string
+|**doctorName** +
+__optional__|处方开立药师姓名|string
+|**dosageAuditState** +
+__optional__|药师审方状态 Constants.YES_NO|string
+|**dosageWorkerId** +
+__optional__|处方调配药剂师id|string
+|**dosageWorkerName** +
+__optional__|处方调配药剂师姓名|string
+|**id** +
+__optional__|主键|string
+|**latch** +
+__optional__|处方锁定|string
+|**medicalOrganizationId** +
+__optional__|医疗机构代码|string
+|**medicalOrganizationName** +
+__optional__|医疗机构名称|string
+|**outPatientId** +
+__optional__|门诊标识|string
+|**patientAge** +
+__optional__|患者年龄|string
+|**patientIdcard** +
+__optional__|患者身份证号|string
+|**patientName** +
+__optional__|患者姓名|string
+|**patientSex** +
+__optional__|患者性别|string
+|**rcClientId** +
+__optional__|处方来源|string
+|**rcHospitalId** +
+__optional__|处方医院ID|string
+|**rcMedicinePaid** +
+__optional__|0 未划价 10 已划价 20 已支付)|string
+|**recipeAuditState** +
+__optional__|处方审计状态 Constants.YES_NO|string
+|**recipeCheckPersonId** +
+__optional__|处方核对药剂师id|string
+|**recipeCheckPersonName** +
+__optional__|处方核对药剂师姓名|string
+|**recipeCreateDate** +
+__optional__|处方开立日期|string
+|**recipeMedicineList** +
+__optional__||< <<_recipemedicinedto,RecipeMedicineDTO>> > array
+|**recipeNumber** +
+__optional__|处方编号|string
+|===
+
+
+[[_repoorderdto]]
+=== RepoOrderDTO
+配货信息
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**businessName** +
+__optional__|购药药店名称|string
+|**buyerName** +
+__optional__|购药人姓名|string
+|**deliveryOrderNumber** +
+__optional__|配货单号|string
+|**id** +
+__optional__|订单号|string
+|**message** +
+__optional__|留言|string
+|**orderDate** +
+__optional__|订单创建时间|string
+|**payType** +
+__optional__|支付方式（在线支付、货到付款）|string
+|**receiverAddress** +
+__optional__|收货人详细地址|string
+|**receiverArea** +
+__optional__|收货人区域地址|string
+|**receiverName** +
+__optional__|收货人姓名|string
+|**receiverPhone** +
+__optional__|收货人联系方式|string
+|**repoProductDTOList** +
+__optional__||< <<_repoproductdto,RepoProductDTO>> > array
+|**totalAmount** +
+__optional__|总金额，单位元|number
+|===
+
+
+[[_repoproductdto]]
+=== RepoProductDTO
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**count** +
+__optional__|数量|string
+|**drugName** +
+__optional__|药品名称|string
+|**drugPackage** +
+__optional__|包装|string
+|**price** +
+__optional__|单价|string
+|===
+
+
+[[_settleinfoinsuranceentity]]
+=== SettleInfoInsuranceEntity
+医保结算信息
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**cashPay** +
+__optional__|现金支付|number
+|**id** +
+__optional__|结算记录id|string
+|**insuranceId** +
+__optional__|医保结算记录id|string
+|**overallPay** +
+__optional__|统筹|number
+|**personalPay** +
+__optional__|个人支付|number
+|**previousPay** +
+__optional__|预结算标志|string
+|**settleDate** +
+__optional__|结算时间|string
+|**settlePerson** +
+__optional__|结算人|string
+|**settleType** +
+__optional__|结算状态|string
+|**sumMoney** +
+__optional__|总金额|number
+|===
+
+
+[[_sitransdto]]
+=== SiTransDTO
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**idcard** +
+__optional__||string
+|**name** +
+__optional__||string
+|**password** +
+__optional__||string
+|**payChannel** +
+__optional__|支付渠道|string
+|**sbkh** +
+__optional__||string
+|===
+
+
+[[_sort]]
+=== Sort
+__Type__ : object
+
+
+[[_spxxdto]]
+=== SpxxDTO
+慢性病审批信息
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**aae031** +
+__optional__|审批期限|string
+|**aka127** +
+__optional__|慢性病病种编码|string
+|**aka128** +
+__optional__|慢性病病种名称|string
+|**akb020** +
+__optional__|审批的定点编号|string
+|===
+
+
+[[_tokenmessagedto]]
+=== TokenMessageDTO
+返回Token信息DTO
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**code** +
+__optional__|返回码|integer (int32)
+|**token** +
+__optional__|用户Token|string
+|**userId** +
+__optional__|用户 Id|string
+|===
+
+
+[[_updaterecipedto]]
+=== UpdateRecipeDTO
+修改处方信息
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**aka130** +
+__optional__|医疗类别|string
+|**diagnoseCode** +
+__optional__|诊断代码|string
+|**id** +
+__optional__|主键|string
+|**outPatientId** +
+__optional__|门诊编号|string
+|**recipeMedicineList** +
+__optional__||< <<_newrecipemedicinedto,NewRecipeMedicineDTO>> > array
+|===
+
+
+[[_ybjsoutdto]]
+=== YbjsOutDTO
+医保结算返回信息
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**akc087** +
+__optional__|卡结算后余额|string
+|**akc255** +
+__optional__|本次帐户支付金额|string
+|**akc260** +
+__optional__|本次统筹支付金额|string
+|**akc261** +
+__optional__|本次现金支付金额|string
+|**akc264** +
+__optional__|医疗费总额|string
+|**akc706** +
+__optional__|大病救助基金支付|string
+|**akc707** +
+__optional__|公务员补助支付|string
+|**akc708** +
+__optional__|其他基金支出|string
+|**errormsg** +
+__optional__|返回错误信息|string
+|**returnnum** +
+__optional__|返回成功标志(1成功-1失败)|string
+|===
+
+
+[[_11dc2c1056f4197576463eee84956d49]]
+=== 订单确认时的附加信息
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**addressId** +
+__optional__|地址id|string
+|**message** +
+__optional__|买家留言|string
+|**orderId** +
+__optional__|订单Id|string
+|**payType** +
+__optional__|支付方式|string
+|===
+
+
+[[_5740b9cba32509084b2e7ba1fa441c8a]]
+=== 请求划价
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**drugstoreId** +
+__optional__|购药药店ID|string
+|**recipeId** +
+__optional__|处方ID|string
+|===
+
+
+[[_5e3d0fe782651c8b30e4efc22b9e5a9d]]
+=== 问诊排队状态
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**departmentId** +
+__optional__|科室主键|string
+|**departmentName** +
+__optional__|科室名称|string
+|**diagnoseMessage** +
+__optional__|就诊说明|string
+|**doctorId** +
+__optional__|医生主键|string
+|**doctorName** +
+__optional__|医生名称|string
+|**hospitalId** +
+__optional__|医院主键|string
+|**hospitalName** +
+__optional__|医院名称|string
+|**id** +
+__optional__|门诊号（问诊号）|string
+|**inquiringCloseDate** +
+__optional__|取消问诊时间|string
+|**inquiringCompleteDate** +
+__optional__|结束问诊时间|string
+|**inquiringDate** +
+__optional__|发起问诊时间|string
+|**inquiringStatus** +
+__optional__|问诊状态|string
+|**queueCnt** +
+__optional__|排队人数|integer (int32)
+|**rongCloudId** +
+__optional__||string
+|**userAae140** +
+__optional__|参保险种 0 职工、1 居民、 -1 未参保|string
+|**userId** +
+__optional__|就诊人身份证号|string
+|**userName** +
+__optional__|就诊人姓名|string
+|**userType** +
+__optional__|用户来源-目前只有GGFW|string
+|**userZka102** +
+__optional__|慢病病种|string
+|===
+
+
+
+
+
