@@ -33,7 +33,7 @@ public class convertFile {
                 .withMarkupLanguage(MarkupLanguage.ASCIIDOC)
                 .build();
         //swagger地址
-        String url="http://172.30.3.217:6301";
+        String url="http://172.30.3.217:10110";
         //导入文件名
         String fileName="会议室预定";
         String adocPath = "./asciidoc/"+fileName;
@@ -55,8 +55,8 @@ public class convertFile {
         attributes.setAttribute("pdf-fontsdir","./src/main/resources/fonts");
         attributes.setAttribute("pdf-style","./src/main/resources/theme.yml");
         OptionsBuilder optionsBuilder = OptionsBuilder.options()
-                .backend("pdf")
-//                .backend("html")
+//                .backend("pdf")
+                .backend("html")
                 .docType("book")
                 .eruby("")
                 .inPlace(true)
